@@ -10,4 +10,5 @@ import java.util.List;
 public interface ResourceRepository extends GenericRepository<Resource, Integer> {
     List<Resource> findAllByUserId(int userId);
     Resource findResourceByNameAndUser(String resourceName, User user);
+    Resource findResourceById(int resourceId);
 }
