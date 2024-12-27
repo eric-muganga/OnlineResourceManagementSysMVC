@@ -30,8 +30,12 @@ public class KeyHandler {
 
     // Generates a SecretKey for AES encryption
     public static SecretKey generateSecretKey() throws Exception {
-        KeyGenerator keyGen = KeyGenerator.getInstance("AES");
-        keyGen.init(128); // could use 256 for stronger encryption
-        return keyGen.generateKey();
+        try {
+            KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+            keyGenerator.init(256); // Specify key size
+            return keyGenerator.generateKey();
+        } catch (Exception e) {
+            throw new RuntimeException("Error generating secret key", e);
+        }
     }
 }
